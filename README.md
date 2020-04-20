@@ -4,7 +4,9 @@ A respberry pi base attandance system
 //User Creation
 
 Method: POST
+
 URL: POST /{USER}/users
+
 Header: Content type= Application/JSON
 
 Body:
@@ -90,9 +92,13 @@ Response:
 
 
 Method: GET
+
 URL: GET /{USER}/users/me
+
 Header: 
+    
     Content-type= Application/JSON
+    
     Autherization: Bearer [Token-id]
 
 Body:
@@ -100,7 +106,8 @@ Body:
     {
 	"rffid" : "1234567891020"
 }
-Status Code": 200
+
+Status Code: 200
 
 Response:
 
@@ -125,16 +132,24 @@ Response:
     ],
     "__v": 2
 }
-Status Code": 200
+
+Status Code: 200
 
 
 //Logout
 
--> Method: POST
-URL: POST /{USER}/users/logout
-     POST /{USER}/users/logoutall
+Method: POST
+
+URL: 
+	
+	POST /{USER}/users/logout
+     	
+	POST /{USER}/users/logoutall
+
 Header: 
+    
     Content-type= Application/JSON
+    
     Autherization: Bearer [Token-id]
 
 Body:

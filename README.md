@@ -18,6 +18,7 @@ Body:
 
 Status Code: 201
 Response:
+
     {
     "user": {
         "age": 27,

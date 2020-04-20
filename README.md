@@ -3,7 +3,7 @@ A respberry pi base attandance system
 
 //User Creation
 
--> Method: POST
+Method: POST
 URL: POST /{USER}/users
 Header: Content type= Application/JSON
 Body:
@@ -43,7 +43,7 @@ Response:
 
 //User Login
 
--> Method: POST
+Method: POST
 URL: POST /{USER}/users/login
 Header: Content type= Application/JSON
 Body:
@@ -80,7 +80,7 @@ response:
 //Fetching Profile
 
 
--> Method: GET
+Method: GET
 URL: GET /{USER}/users/me
 Header: 
     Content-type= Application/JSON

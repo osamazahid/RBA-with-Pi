@@ -6,6 +6,7 @@ A respberry pi base attandance system
 Method: POST
 URL: POST /{USER}/users
 Header: Content type= Application/JSON
+
 Body:
 
     {
@@ -18,6 +19,7 @@ Body:
 }
 
 Status Code: 201
+
 Response:
 
     {
@@ -50,6 +52,7 @@ Method: POST
 URL: POST /{USER}/users/login
 
 Header: Content type= Application/JSON
+
 Body:
 
     {
@@ -58,7 +61,7 @@ Body:
 
 Status code: 200
 
-response:
+Response:
 
     {
     "user": {
@@ -92,13 +95,13 @@ Header:
     Content-type= Application/JSON
     Autherization: Bearer [Token-id]
 
-
 Body:
 
     {
 	"rffid" : "1234567891020"
 }
 Status Code": 200
+
 Response:
 
     {
@@ -134,7 +137,6 @@ Header:
     Content-type= Application/JSON
     Autherization: Bearer [Token-id]
 
-
 Body:
 
     {
@@ -142,7 +144,7 @@ Body:
 }
 status code: 200
 
-response:
+Response:
 
     {NULL}
 

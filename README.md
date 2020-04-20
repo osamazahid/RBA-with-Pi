@@ -7,6 +7,7 @@ Method: POST
 URL: POST /{USER}/users
 Header: Content type= Application/JSON
 Body:
+
     {
 	"name": "osama",
 	"email" : "osama@example.com",
@@ -45,9 +46,12 @@ Response:
 //User Login
 
 Method: POST
+
 URL: POST /{USER}/users/login
+
 Header: Content type= Application/JSON
 Body:
+
     {
 	"rffid" : "1234567891020"
 }
@@ -55,6 +59,7 @@ Body:
 Status code: 200
 
 response:
+
     {
     "user": {
         "age": 27,
@@ -89,11 +94,13 @@ Header:
 
 
 Body:
+
     {
 	"rffid" : "1234567891020"
 }
 Status Code": 200
 Response:
+
     {
     "age": 27,
     "role": "user",
@@ -129,11 +136,13 @@ Header:
 
 
 Body:
+
     {
 	"rffid" : "1234567891020"
 }
 status code: 200
 
 response:
+
     {NULL}
 

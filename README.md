@@ -58,7 +58,8 @@ Header: Content type= Application/JSON
 Body:
 
     {
-	"rffid" : "1234567891020"
+	"email" : "xyz@db-automobile.com",
+	"password": "123456678"
 }
 
 Status code: 200
@@ -104,7 +105,8 @@ Header:
 Body:
 
     {
-	"rffid" : "1234567891020"
+	"email" : "xyz@db-automobile.com",
+	"password": "123456678"
 }
 
 Status Code: 200
@@ -155,11 +157,168 @@ Header:
 Body:
 
     {
-	"rffid" : "1234567891020"
+	"email" : "xyz@db-automobile.com",
+	"password": "123456678"
 }
+
 status code: 200
 
 Response:
 
     {NULL}
 
+//tag-enter
+
+
+Method: POST
+
+URL: 
+	
+	POST users/tag/enter
+
+Header: 
+    
+    Content-type= Application/JSON
+    
+
+Body:
+
+    {
+	"rffid" : "1234567891020"
+}
+status code: 200
+
+Response:
+
+    {
+    "task": {
+        "_id": "5eaa78361083be2f284f8d6c",
+        "name": "osama",
+        "rffid": "1234567891020",
+        "ts": "9:3:18",
+        "dt": "30-04-2020",
+        "__v": 0
+    }
+}
+
+//tag-leave
+
+
+
+Method: POST
+
+URL: 
+	
+	POST users/tag/leave
+
+Header: 
+    
+    Content-type= Application/JSON
+    
+
+Body:
+
+    {
+	"rffid" : "1234567891020"
+}
+status code: 200
+
+Response:
+
+    {
+    "task": {
+        "_id": "5eaa78361083be2f284f8d6c",
+        "name": "osama",
+        "rffid": "1234567891020",
+        "ts": "9:3:18",
+        "dt": "30-04-2020",
+        "__v": 0
+    }
+}
+
+
+//Update
+
+
+Method: PATCH
+
+URL: 
+	
+	PATCh users/:id
+
+Parms: 
+    
+    _id= :id
+    
+
+Body:
+
+    {
+	"email" : "xyz@db-automobile.com"
+}
+status code: 200
+
+Response:
+
+    {
+    "task": {
+        "_id": "5eaa78361083be2f284f8d6c",
+        "name": "osama",
+        "rffid": "1234567891020",
+        "ts": "9:3:18",
+        "dt": "30-04-2020",
+        "__v": 1
+    }
+}
+
+
+//Delete
+
+
+Method: DELETE
+
+URL: 
+	
+	DELETE users/:id
+
+Parms: 
+    
+    _id= :id
+    
+
+Body:
+
+    {
+	"email" : "xyz@db-automobile.com"
+}
+status code: 200
+
+Response:
+
+    {NULL}
+    
+    
+//working-time
+
+
+Method: GET
+
+URL: 
+	
+	GET users/:id/working-time
+
+Parms: 
+    
+    _id =: id
+    
+
+Body:
+
+    {
+	"email" : "xyz@db-automobile.com"
+}
+status code: 200
+
+Response:
+
+    {"user-x": "time"}

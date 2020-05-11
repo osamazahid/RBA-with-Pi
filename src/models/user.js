@@ -53,12 +53,20 @@ const userSchema = new mongoose.Schema({
             type: String,
             required: true
         }
-    }]
+    }],
+    role: {    
+        type: String,    
+        enum: ['user', 'admin','management'],    
+        required: true,    
+        default: 'user'
+    }
 })
 
 userSchema.methods.generateAuthToken = async function () {
     const user = this
-    const token = jwt.sign({ _id: user._id.toString() }, 'thisismynewcourse')
+    console.log(this.role)
+    const token = jwt.sign({ _id: user._id.toString(), role: this.role }, 'thisismynewcourse')
+    console.log(token)
 
     user.tokens = user.tokens.concat({ token })
     await user.save()
@@ -66,7 +74,9 @@ userSchema.methods.generateAuthToken = async function () {
     return token
 }
 
-userSchema.statics.findByCredentials = async (rffid) => {
+
+
+userSchema.statics.findByRfid = async (rffid) => {
     const user = await User.findOne({ rffid })
 
     if (!user) {
@@ -81,6 +91,25 @@ userSchema.statics.findByCredentials = async (rffid) => {
 
     return user
 }
+
+
+
+userSchema.statics.findByCredentials = async (email, password) => {
+    const user = await User.findOne({ email })
+
+    if (!user) {
+        throw new Error('Unable to login')
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password)
+
+    if (!isMatch) {
+        throw new Error('Unable to login')
+    }
+
+    return user
+}
+
 
 // Hash the plain text password before saving
 userSchema.pre('save', async function (next) {

@@ -193,12 +193,17 @@ Header: Content-type= Application/JSON
     
 
 Body:
- 	NULL
+ 	
+	NULL
 	
 status code: 
 	Success: 200
 	Error: 400
+
+
 Response:
+
+
     {
     "work_time_by_day": {
         "Day": "",

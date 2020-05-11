@@ -1,11 +1,12 @@
 # RBA-with-Pi
 A respberry pi base attandance system
 
-//User Creation
+==> User Creation:
+This end point is used to create user.
 
 Method: POST
 
-URL: POST /{USER}/users
+URL: POST /users/create
 
 Header: Content type= Application/JSON
 
@@ -20,38 +21,24 @@ Body:
 	"title": "admin"
 }
 
-Status Code: 201
-
+Status Code: 
+	Success: 201
+	Error: 400
+	
 Response:
+	"User created!"
 
-    {
-    "user": {
-        "age": 27,
-        "_id": "5e8b39895c836f5e2802ecb2",
-        "name": "osama",
-        "email": "osama@example.com",
-        "password": "$2a$08$5z1106hcMfK04LnZn9ZmSusv.wCVXfdldY3xX5mUyhVn7DnEZmxuu",
-        "rffid": "1234567891020",
-        "title": "admin",
-        "tokens": [
-            {
-                "_id": "5e8b39895c836f5e2802ecb3",
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThiMzk4OTVjODM2ZjVlMjgwMmVjYjIiLCJpYXQiOjE1ODYxODI1Mzd9.4O05WhN9I-4nwrZ9_AyBby8rTRWUOSh-YAfSMuABNdU"
-            }
-        ],
-        "__v": 1
-    },
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThiMzk4OTVjODM2ZjVlMjgwMmVjYjIiLCJpYXQiOjE1ODYxODI1Mzd9.4O05WhN9I-4nwrZ9_AyBby8rTRWUOSh-YAfSMuABNdU"
-}
+
+---
 
 
 
-
-//User Login
+==> User Login:
+	This end point is for signing up user thourgh web portal login page
 
 Method: POST
 
-URL: POST /{USER}/users/login
+URL: POST /users/login
 
 Header: Content type= Application/JSON
 
@@ -62,7 +49,9 @@ Body:
 	"password": "123456678"
 }
 
-Status code: 200
+Status code: 
+	Success: 200
+	Error: 400
 
 Response:
 
@@ -88,71 +77,20 @@ Response:
 
 
 
-
-//Fetching Profile
-
-
-Method: GET
-
-URL: GET /{USER}/users/me
-
-Header: 
-    
-    Content-type= Application/JSON
-    
-    Autherization: Bearer [Token-id]
-
-Body:
-
-    {
-	"email" : "xyz@db-automobile.com",
-	"password": "123456678"
-}
-
-Status Code: 200
-
-Response:
-
-    {
-    "age": 27,
-    "role": "user",
-    "_id": "5e8b39895c836f5e2802ecb2",
-    "name": "osama",
-    "email": "osama@example.com",
-    "password": "$2a$08$5z1106hcMfK04LnZn9ZmSusv.wCVXfdldY3xX5mUyhVn7DnEZmxuu",
-    "rffid": "1234567891020",
-    "title": "admin",
-    "tokens": [
-        {
-            "_id": "5e8b39895c836f5e2802ecb3",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThiMzk4OTVjODM2ZjVlMjgwMmVjYjIiLCJpYXQiOjE1ODYxODI1Mzd9.4O05WhN9I-4nwrZ9_AyBby8rTRWUOSh-YAfSMuABNdU"
-        },
-        {
-            "_id": "5e9d82298a696203084e47b2",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThiMzk4OTVjODM2ZjVlMjgwMmVjYjIiLCJpYXQiOjE1ODczODA3Nzd9.kG2qhlWh3PSVSmJDlnyEDvKacrCY2oLdAk3aHD999Ak"
-        }
-    ],
-    "__v": 2
-}
-
-Status Code: 200
+---
 
 
-//Logout
+
+==> UserLogout:
+	This end point is for terminating session over web portal
 
 Method: POST
 
-URL: 
-	
-	POST /{USER}/users/logout
+URL: POST /users/logout
      	
-	POST /{USER}/users/logoutall
 
-Header: 
-    
-    Content-type= Application/JSON
-    
-    Autherization: Bearer [Token-id]
+Header: Content-type= Application/JSON
+    	Autherization: Bearer [Token-id]
 
 Body:
 
@@ -161,59 +99,26 @@ Body:
 	"password": "123456678"
 }
 
-status code: 200
+status code: 
+	Success: 200
+	Error: 400
 
 Response:
 
-    {NULL}
-
-//tag-enter
+    NULL
 
 
-Method: POST
-
-URL: 
-	
-	POST users/tag/enter
-
-Header: 
-    
-    Content-type= Application/JSON
-    
-
-Body:
-
-    {
-	"rffid" : "1234567891020"
-}
-status code: 200
-
-Response:
-
-    {
-    "task": {
-        "_id": "5eaa78361083be2f284f8d6c",
-        "name": "osama",
-        "rffid": "1234567891020",
-        "ts": "9:3:18",
-        "dt": "30-04-2020",
-        "__v": 0
-    }
-}
-
-//tag-leave
+---
 
 
+==> tag-enter:
+	We are consuming this end point in respberry pi script for logging attandance time stamps in system. It saves employee entrance time in office. 
 
 Method: POST
 
-URL: 
-	
-	POST users/tag/leave
+URL: POST /users/tag/enter
 
-Header: 
-    
-    Content-type= Application/JSON
+Header: Content-type= Application/JSON
     
 
 Body:
@@ -237,24 +142,24 @@ Response:
 }
 
 
-//Update
+---
 
 
-Method: PATCH
+==> tag-leave:
+	We are consuming this end point in respberry pi script for logging attandance time stamps in system. It saves employee exit/leave time from office. 	
 
-URL: 
-	
-	PATCh users/:id
 
-Parms: 
-    
-    _id= :id
+Method: POST
+
+URL: POST /users/tag/leave
+
+Header: Content-type= Application/JSON
     
 
 Body:
 
     {
-	"email" : "xyz@db-automobile.com"
+	"rffid" : "1234567891020"
 }
 status code: 200
 
@@ -267,58 +172,41 @@ Response:
         "rffid": "1234567891020",
         "ts": "9:3:18",
         "dt": "30-04-2020",
-        "__v": 1
+        "__v": 0
     }
 }
 
 
-//Delete
+---
 
 
-Method: DELETE
-
-URL: 
+==> Working time:
+	This end point fetch the working time of employee
 	
-	DELETE users/:id
-
-Parms: 
-    
-    _id= :id
-    
-
-Body:
-
-    {
-	"email" : "xyz@db-automobile.com"
-}
-status code: 200
-
-Response:
-
-    {NULL}
-    
-    
-//working-time
-
-
 Method: GET
 
-URL: 
-	
-	GET users/:id/working-time
+URL: GET /users/working_time
 
-Parms: 
-    
-    _id =: id
+Header: Content-type= Application/JSON
+    	Autherization: Bearer [Token-id]
     
 
 Body:
-
-    {
-	"email" : "xyz@db-automobile.com"
-}
-status code: 200
-
+ 	NULL
+	
+status code: 
+	Success: 200
+	Error: 400
 Response:
+    {
+    "work_time_by_day": {
+        "Day": "",
+        "Date": "",
+        "Start_time": "",
+        "End_time": "",
+        "Break": "",
+        "Total_hours": NaN
+    }
+}
 
-    {"user-x": "time"}
+---

@@ -212,7 +212,7 @@ Response:
         "End_time": "",
         "Break": "",
         "Total_hours": NaN
+    	}
     }
-}
 
 ---

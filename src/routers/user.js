@@ -30,13 +30,13 @@ router.post('/users/login', async (req, res) => {
         //name=user.name
         //rffid=user.rffid
         //console.log(name,rffid)
-        let date_ob = new Date()
-        let ts=date_ob.getHours().toString().concat(":",date_ob.getMinutes().toString(),":",date_ob.getSeconds().toString())
-        let dt=("0" + date_ob.getDate()).slice(-2).toString().concat("-",("0" + (date_ob.getMonth() + 1)).slice(-2).toString(),"-",date_ob.getFullYear().toString())
-        var task = new Task({name:user.name, rffid:user.rffid,ts:ts,dt:dt})
-        await task.save()
-        const decoded = jwt.verify(token, 'thisismynewcourse')
-        console.log(decoded)
+        //let date_ob = new Date()
+        //let ts=date_ob.getHours().toString().concat(":",date_ob.getMinutes().toString(),":",date_ob.getSeconds().toString())
+        //let dt=("0" + date_ob.getDate()).slice(-2).toString().concat("-",("0" + (date_ob.getMonth() + 1)).slice(-2).toString(),"-",date_ob.getFullYear().toString())
+        //var task = new Task({name:user.name, rffid:user.rffid})
+        //await task.save()
+        //const decoded = jwt.verify(token, 'thisismynewcourse')
+        //console.log(decoded)
          
         res.send({ user, token })
     
@@ -53,7 +53,7 @@ router.post('/users/tag/enter', async (req, res) => {
         let date_ob = new Date()
         let ts=date_ob.getHours().toString().concat(":",date_ob.getMinutes().toString(),":",date_ob.getSeconds().toString())
         let dt=("0" + date_ob.getDate()).slice(-2).toString().concat("-",("0" + (date_ob.getMonth() + 1)).slice(-2).toString(),"-",date_ob.getFullYear().toString())
-        var task = new Task({name:user.name, rffid:user.rffid,ts:ts,dt:dt})
+        var task = new Task({name:user.name, rffid:user.rffid, ts:ts, dt:dt })
         await task.save()
  
          
@@ -73,7 +73,7 @@ router.post('/users/tag/leave', async (req, res) => {
         let date_ob = new Date()
         let ts=date_ob.getHours().toString().concat(":",date_ob.getMinutes().toString(),":",date_ob.getSeconds().toString())
         let dt=("0" + date_ob.getDate()).slice(-2).toString().concat("-",("0" + (date_ob.getMonth() + 1)).slice(-2).toString(),"-",date_ob.getFullYear().toString())
-        var task = new Task({name:user.name, rffid:user.rffid,ts:ts,dt:dt})
+        var task = new Task({name:user.name, rffid:user.rffid, ts:ts, dt:dt})
         await task.save()
  
          

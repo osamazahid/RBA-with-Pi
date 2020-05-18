@@ -10,14 +10,14 @@ const taskSchema = new mongoose.Schema({
         trim: true,
     },
 
-    ts: {
-        type: String,
-        trim: true,
-    },
-    dt: {
-        type: String,
-        trim: true,
-    }
+     ts: {
+         type: String,
+         trim: true,
+     },
+     dt: {
+         type: String,
+         trim: true,
+     }
 })
 const Task = mongoose.model('Task', taskSchema)
 module.exports = Task
